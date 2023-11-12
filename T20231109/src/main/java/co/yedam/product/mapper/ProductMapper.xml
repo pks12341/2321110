@@ -3,19 +3,15 @@
 <mapper namespace="co.yedam.product.mapper.ProductMapper">
 	<select id="selectList"
 		resultType="co.yedam.product.service.ProductVO">
-		SELECT * FROM TBL_PRODUCT 
+		select * from tbl_product order by prod_code
+	</select>
+	<select id="select"
+		resultType="co.yedam.product.service.ProductVO" parameterType="String">
+		select *
+		from tbl_product where prod_code = #{prodCode}
 	</select>
 
-	<select id="select" resultType="co.yedam.product.service.ProductVO"
-		parameterType="int">
-		select * from TBL_PRODUCT where PROD_CODE=#{prodCode}
+	<select id="selectReList" resultType="co.yedam.product.service.ProductVO">
+		select * from tbl_product order by like_it desc
 	</select>
-	<update id="updateCnt" parameterType="int">
-		UPDATE TBL_PRODUCT SET like_it = like_it+1
-		where PROD_CODE = #{prodCode}
-	</update>
-
-<!-- 파라미터가 2개인 경우 에는 @Param을 사용 -->
-	
-
 </mapper>

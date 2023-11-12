@@ -20,8 +20,8 @@ public class ProductList implements Command {
 		ProductService svc = new ProductServiceImpl();
 		List<ProductVO> list = svc.productList();
 
-		req.setAttribute("productList", list);
-		System.out.println(list);
+		req.setAttribute("list", list);
+	//	System.out.println(list);
 		// 다른페이지로 이동할정보를 가지고있다
 		// 페이지 요청(boardList.do) -> 요청 재 지정(board/boardList.jsp).
 		RequestDispatcher rd = req.getRequestDispatcher(path);// .forward(req, resp);

@@ -12,21 +12,26 @@ import co.yedam.product.service.ProductVO;
 public class ProductServiceImpl implements ProductService{
 
 
-	SqlSession sqlSession = DataSourceMybatis.getInstance().openSession(true); //true는 자동커밋을한다는뜻
+	SqlSession sqlSession = DataSourceMybatis.getInstance().openSession(true); //true  ->  자동커밋
+
 	ProductMapper mapper = sqlSession.getMapper(ProductMapper.class);
-	
-		
+
 	@Override
 	public List<ProductVO> productList() {
-		//return dao.selectList();
 		return mapper.selectList();
 	}
 
 	@Override
-	public ProductVO getProduct(String productNo) {
-		//dao.updateCnt(boardNo);
-		//return dao.select(boardNo);
-		return mapper.select(productNo);
+	public ProductVO getProduct(String prodCode) {
+		return mapper.select(prodCode);
 	}
+
+	@Override
+	public List<ProductVO> selectReList() {
+		return mapper.selectReList();
+	}
+
+
+
 
 }

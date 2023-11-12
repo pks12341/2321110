@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <tiles-definitions>
-	<!-- 예제 <definition name="myapp.homepage" template="/layouts/classic.jsp"> 
-		<put-attribute name="title" value="Tiles tutorial homepage" /> <put-attribute 
-		name="header" value="/tiles/banner.jsp" /> <put-attribute name="menu" value="/tiles/common_menu.jsp" 
-		/> <put-attribute name="body" value="/tiles/home_body.jsp" /> <put-attribute 
-		name="footer" value="/tiles/credits.jsp" /> </definition> </! -->
-		
-		<!-- 정의되어진 순서대로 실행된다 -->
-	<definition name="productList"
-		template="/WEB-INF/layouts/template.jsp">
-		<put-attribute name="title" value="게시판 템플릿" />
-		<put-attribute name="header"
-			value="/WEB-INF/layouts/header.jsp" />
-		<put-attribute name="body"
-			value="/WEB-INF/layouts/body.jsp" />
-		<put-attribute name="footer"
-			value="/WEB-INF/layouts/footer.jsp" />
+
+	<definition name="productpage" template="/WEB-INF/layouts/template.jsp">
+		<put-attribute name="title" value="상품 목록" />
+		<put-attribute name="header" value="/WEB-INF/layouts/header.jsp" />
+		<put-attribute name="body" value="/WEB-INF/layouts/body.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
 	</definition>
-	
-	
-	<definition name="WILDCARD:product/*" extends="productList">
-		<put-attribute name="body"
-			value="/WEB-INF/product/{1}.jsp" />
+	<definition name="WILDCARD:product/*" extends="productpage">
+		<put-attribute name="body" value="/WEB-INF/product/{1}.jsp" />
 	</definition>
-	
+
+	<definition name="WILDCARD:*/*" extends="productpage">
+		<put-attribute name="body" value="/WEB-INF/{1}/{2}.jsp" />
+	</definition>
 
 </tiles-definitions>
